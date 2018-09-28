@@ -1,0 +1,4 @@
+services:
+#    mmarchio_node_manager.example:
+#        class: mmarchio\NodeManagerBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

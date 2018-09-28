@@ -1,0 +1,65 @@
+{% extends '@NodeManager/Default/index.html.twig' %}
+{% block body %}
+    <form action="{{ data.submit }}/create/node" method="POST" id="node">
+        <ul>
+            <li>Create Node</li>
+            <li id="nodes"></li>
+            <li>
+                <ul>
+                    <li id='node_fields'>
+                        <label for='node_name'>Node Name</label>
+                        <input type='text' name='node_name' id='node_name'>
+                        </li>
+                    <li>
+                        <label for='new_node_field_type'>Field Type</label>
+                        <select name='new_node_field_type' id='new_node_field_type'>
+                              <option value=\"0\">Select Type</option>\n
+                              <option value=\"array\">Array</option>\n
+                              <option value=\"bigint\">Big Int</option>\n
+                              <option value=\"binary\">Binary</option>\n
+                              <option value=\"blob\">Blob</option>\n
+                              <option value=\"boolean\">Boolean</option>\n
+                              <option value=\"decimal\">Decimal</option>\n
+                              <option value=\"datetime\">Date Time</option>\n
+                              <option value=\"datetimetz\">Date Time TZ</option>\n
+                              <option value=\"date\">Date</option>\n
+                              <option value=\"float\">Float</option>\n
+                              <option value=\"guid\">Guid</option>\n
+                              <option value=\"integer\">Integer</option>\n
+                              <option value=\"jsonarray\">Json Array</option>\n
+                              <option value=\"object\">Object</option>\n
+                              <option value=\"simplearray\">Simple Array</option>\n
+                              <option value=\"smallint\">Small Int</option>\n
+                              <option value=\"string\">String</option>\n
+                              <option value=\"text\">Text</option>\n
+                              <option value=\"time\">Time</option>\n
+                        </select>
+                        <label for='new_node_field'>Add Field</label>
+                        <input type='button' name='new_node_field' id='new_node_field' value='Add Field'>
+                    </li>
+                 </ul>
+            </li>
+            <li>
+                <input type="submit" value="Create Node">
+            </li>
+        </ul>
+    </form>
+    <form action="/create/field" method="POST" id="field">
+        <ul>
+            <li>Create Field</li>
+            <li id="fields"></li>
+            <li>
+                <input type="button" name="add_field" id="add_field" value="Add Field">
+            </li>
+            <li>
+                <input type="submit" value="Create Field">
+            </li>
+        </ul>
+    </form>
+    <script src="{{ asset('bundles/mmarchionodemanager/js/nodeManagerBundle.js') }}"></script>
+{% endblock body %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/mmarchionodemanager/css/nodeManagerBundle.css') }}" />
+{% endblock stylesheets %}
