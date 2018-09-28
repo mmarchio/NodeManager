@@ -2,7 +2,7 @@
 
 namespace mmarchio\NodeManagerBundle\Controller;
 
-use mmarchio\mmarchioNodeManager\Entity\node_repository;
+use \mmarchio\NodeManagerBundle\Entity;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -52,7 +52,7 @@ class DefaultController extends Controller
             }
 
             $nodes = $this->getDoctrine()
-                ->getRepository(node_repository::class)
+                ->getRepository(Entity\node_repository::class)
                 ->findBy(["nodeName" => $data->tableName]);
 
             $count = count($nodes);
@@ -61,7 +61,7 @@ class DefaultController extends Controller
                 $response->headers->set("Content-Type","application/json");
                 $response->setContent($msg);
 
-                $nr = new node_repository();
+                $nr = new Entity\node_repository();
                 $nr->setNodeName($data->tableName);
 
                 $em = $this->getDoctrine()->getManager();
